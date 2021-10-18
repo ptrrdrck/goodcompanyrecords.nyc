@@ -21,7 +21,7 @@ body {
   perspective: 400px;*/
 }
 header {
-  margin: 20px 0px;
+  margin-top: 40px;
 }
 a {
   display: inline-block;
@@ -74,7 +74,7 @@ a:hover {
 .link {
   display: inline-block;
   text-align: justify;
-  margin: 20px 0px 20px 50px;
+  margin: 20px 0px 0px 50px;
   color: black;
   padding: 6px 8px 8px 8px;
   border: 1px solid black;
@@ -154,12 +154,12 @@ a:hover {
 }
 @-webkit-keyframes y {
   100% {
-    transform: translateY(calc(100vh - 120px));
+    transform: translateY(calc(100vh - 140px));
   }
 }
 @keyframes y {
   100% {
-    transform: translateY(calc(100vh - 120px));
+    transform: translateY(calc(100vh - 140px));
   }
 }
 @keyframes colorChange {
