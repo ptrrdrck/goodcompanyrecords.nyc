@@ -5,21 +5,23 @@
   box-sizing: border-box
 }
 html {
-  min-height: 100%;
+  height: 100%;
   background: rgb(168,255,176);
   background: linear-gradient(38deg, rgba(168,255,176,1) 0%, rgba(146,255,209,1) 23%, rgba(235,255,155,1) 51%, rgba(216,251,171,1) 100%);
 }
 body {
   font-family: 'Fira Code', monospace;
   font-size: 17px;
-  letter-spacing: 1px
+  letter-spacing: 1px;
+  margin: 0;
+  /*display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  perspective: 400px;*/
 }
 header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 50px;
-  min-height: 100%
+  margin: 20px 0px;
 }
 a {
   display: inline-block;
@@ -43,18 +45,7 @@ a:hover {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent
 }
-@keyframes fadeIn {
-  from {
-    opacity: 0
-  }
-  to {
-    opacity: 1
-  }
-}
-.fade-in {
-  animation: 1s fadeIn;
-  opacity: 1
-}
+
 .logo {
   display: inline-block;
   margin: 20px 20px 20px 50px;
@@ -107,6 +98,11 @@ a:hover {
   color: black;
   letter-spacing: 0px;
 }
+
+/* Radio
+   countdown and on-air image
+*/
+
 #countdown {
   font-family: 'Fira Code', monospace;
   font-size: 17px;
@@ -124,4 +120,93 @@ a:hover {
 #onAir {
   margin: 0px;
   padding: 0px;
+  width: 1px;
+  height: 1px;
+}
+
+/* Logo
+   and logo animation
+*/
+
+.logo {
+  width: 180px;
+  height: auto;
+}
+.x {
+  -webkit-animation: x 20s linear infinite alternate, colorChange 5s linear infinite;
+          animation: x 20s linear infinite alternate, colorChange 5s linear infinite;
+    animation-delay: 3s;
+}
+.y {
+  -webkit-animation: y 14s linear infinite alternate, colorChange 5s linear infinite;
+          animation: y 14s linear infinite alternate, colorChange 5s linear infinite;
+    animation-delay: 3s;
+}
+@-webkit-keyframes x {
+  100% {
+    transform: translateX(calc(100vw - 230px));
+  }
+}
+@keyframes x {
+  100% {
+    transform: translateX(calc(100vw - 230px));
+  }
+}
+@-webkit-keyframes y {
+  100% {
+    transform: translateY(calc(100vh - 120px));
+  }
+}
+@keyframes y {
+  100% {
+    transform: translateY(calc(100vh - 120px));
+  }
+}
+@keyframes colorChange {
+  0% {
+    fill: rgb(128, 255, 141);
+  }
+  11.11% {
+    fill: rgb(200, 255, 168);
+  }
+  22.22% {
+    fill: #ffe58e;
+  }
+  33.33% {
+    fill: #fdffa0;
+  }
+  44.44% {
+    fill: #92ffd1;
+  }
+  55.55% {
+    fill: rgb(104, 178, 247);
+  }
+  66.66% {
+    fill: #a7a0ff;
+  }
+  77.77% {
+    fill: #f8adff;
+  }
+  88.88% {
+    fill: #ffaabf;
+  }
+  100% {
+    fill: #ffa89b;
+  }
+}
+
+/* Global
+   animation classes
+*/
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.fade-in {
+  animation: 1s fadeIn;
+  opacity: 1;
 }
