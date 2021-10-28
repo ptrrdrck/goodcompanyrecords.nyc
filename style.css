@@ -43,8 +43,7 @@ html {
 */
 
 body {
-  font-family: 'Fira Code', monospace;
-  letter-spacing: 1px;
+  font-family: Helvetica, sans-serif;
   margin: 0;
 }
 
@@ -66,7 +65,6 @@ header {
 .byline {
   flex: none;
   color: black;
-  letter-spacing: 0px;
   text-align: center;
   max-width: 300px;
 }
@@ -100,12 +98,15 @@ a:hover {
 }
 
 .info, .radio, .box {
+  font-family: 'Fira Code', monospace;
   margin: 20px 0px;
   color: azure;
   background-color: #000;
-  padding: 7px;
+  padding: 7px 16px;
   border-radius: 2px;
+  line-height: 2;
 }
+
 .info {
   flex: 0 0 0;
   min-width: 300px;
@@ -114,6 +115,7 @@ a:hover {
 .radio {
   flex: 1 0 0;
   max-width: 325px;
+  text-align: center;
 }
 
 .box {
@@ -159,13 +161,14 @@ footer {
   border: 1px solid #000;
   border-radius: 2px;
   background: none;
-  letter-spacing: 0px;
 }
 
 .copyright {
-  flex: none;
+  display: flex;
+  font-size: 0.8rem;
   margin-top: 20px;
   color: black;
-  letter-spacing: 0px;
-  max-width: 500px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
 }
