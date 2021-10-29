@@ -102,14 +102,14 @@ a:hover {
   margin: 20px 0px;
   color: azure;
   background-color: #000;
-  padding: 7px 16px;
+  padding: 8px 16px;
   border-radius: 2px;
   line-height: 2;
 }
 
 .info {
   flex: 0 0 0;
-  min-width: 300px;
+  text-align: center;
 }
 
 .radio {
@@ -129,6 +129,7 @@ a:hover {
   width: 250px;
   margin: 0px 12px;
   line-height: 2;
+  text-align: center;
   background: -webkit-linear-gradient(120deg,rgb(48, 155, 255) 0,#92ffd1 100%);
   background: -moz-linear-gradient(120deg,rgb(48, 155, 255) 0,#92ffd1 100%);
   background: linear-gradient(160deg,rgb(48, 155, 255) 0,#92ffd1 100%);
@@ -153,12 +154,23 @@ footer {
 
 .link {
   text-align: justify;
+  font-size: 0.9rem;
   margin: 10px;
   color: #000;
   padding: 6px 8px 8px 8px;
   border: 1px solid #000;
   border-radius: 2px;
   background: none;
+}
+
+.home {
+  background: none;
+  border: none;
+}
+
+.about {
+  flex: 1 0 0;
+  margin: calc(1rem + 10vw);
 }
 
 .copyright {
