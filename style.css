@@ -94,7 +94,6 @@ a:hover {
   background: linear-gradient(160deg,rgb(48, 155, 255) 0,#92ffd1 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 .info, .radio, .box {
@@ -130,11 +129,15 @@ a:hover {
   margin: 0px 12px;
   line-height: 2;
   text-align: center;
+  color: #fff;
+  background: #000;
+  /*
   background: -webkit-linear-gradient(120deg,rgb(48, 155, 255) 0,#92ffd1 100%);
   background: -moz-linear-gradient(120deg,rgb(48, 155, 255) 0,#92ffd1 100%);
   background: linear-gradient(160deg,rgb(48, 155, 255) 0,#92ffd1 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  */
 }
 
 #onAir {
