@@ -86,7 +86,7 @@ object {
 .home {
   display: block;
   z-index: 1;
-  background: none;
+  background: 0 0;
   border: none;
 }
 
@@ -99,7 +99,7 @@ object {
 .byline {
   z-index: 2;
   flex: none;
-  font-size: 0.8rem;
+  font-size: .8rem;
   font-weight: 600;
   text-transform: uppercase;
   text-align: center;
@@ -118,7 +118,7 @@ main {
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: space-around;
-  margin: 0px 40px 40px;
+  margin: 0 40px 40px;
   gap: 40px;
 }
 
@@ -164,8 +164,8 @@ main {
 }
 
 #onAir {
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
   width: 1px;
   height: 1px;
 }
@@ -202,7 +202,7 @@ footer {
 
 .link {
   text-align: justify;
-  font-size: 0.8rem;
+  font-size: .8rem;
   margin: 10px 5px;
   color: #fff;
   padding: 6px;
@@ -213,7 +213,7 @@ footer {
 }
 
 .copyright {
-  font-size: 0.8rem;
+  font-size: .8rem;
   margin: 20px 0 16px 0;
   color: #fff;
   width: 100%;
