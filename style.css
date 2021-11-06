@@ -33,7 +33,7 @@ a {
 }
 
 a:hover {
-  font-style: italic
+  font-style: italic;
 }
 
 .text-gradient {
@@ -117,27 +117,32 @@ main {
   flex: 1 0 auto;
   flex-wrap: wrap;
   align-items: flex-start;
-  justify-content: space-around;
-  margin: 0 40px 40px;
+  justify-content: space-evenly;
+  margin: 20px 40px 60px;
   gap: 40px;
 }
 
 .box, .radio {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
   margin: 0;
-  color: azure;
+  color: #fff;
   background-color: #000;
   padding: 20px;
   border-radius: 3px;
-  line-height: 2;
   text-align: center;
 }
 
 .radio {
-  flex: 1 1 0;
+  flex: 1 0 0;
+  max-width: 475px;
 }
 
 .box {
-  flex: 1 0 200px;
+  flex: 1 0 250px;
+  width: auto;
 }
 
 .inner {
@@ -155,9 +160,9 @@ main {
 #countdown {
   font-size: 17px;
   letter-spacing: 1px;
-  width: 250px;
-  margin: 0;
   line-height: 2;
+  width: 252px;
+  margin: 0;
   text-align: center;
   color: #fff;
   background: #000;
