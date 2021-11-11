@@ -1,37 +1,39 @@
 function countToShow(){
-    var A = [], x, d, diff, cd = document.getElementById('countdown'),
-    cdimg =document.getElementById('onAir'),
-    onAir = new Date(Date.UTC(2021, 9, 22, 24)), now = new Date();
+    var timeRemaining = [], x, d, diff, cd = document.getElementById('countdown'),
+    liveLink = document.getElementById('live'),
+    onAir = new Date(Date.UTC(2021, 10, 5, 23)),
+    now = new Date();
     while(onAir < now) onAir.setDate(onAir.getDate() + 14);
     diff = (onAir - now);
-    if (diff < 3600000) {
-        cdimg.style.visibility = 'visible';
-        cd.style.visibility = 'hidden';
+    if (diff < 7200000) {
+        liveLink.style.display = 'inline';
+        cd.style.display = 'none';
     }
     else {
-        x = Math.abs(diff - 3600000);
+        x = Math.abs(diff);
         d = Math.floor(x / 86400000);
         if (d > 1) {
-            A.push(d + " days");
+            timeRemaining.push(d + ' days');
             x %= 86400000;
         }
         x = Math.floor(x / 1000);
         if (x> 3600) {
             d = Math.floor(x / 3600);
-            A.push(d + "h"/* +(d > 1? "s": "")*/);
+            timeRemaining.push(d + 'h');
             x %= 3600;
         }
         if (x > 60) {
             d = Math.floor(x / 60);
-            A.push(d + "m"/* +(d> 1? "s": "")*/);
+            timeRemaining.push(d + 'm');
             x %= 60;
         }
-        if (x > 0) A.push(x + "s"/* +(x> 1? "s": "")*/);
-        cdimg.style.visibility = 'hidden';
-        cd.value = A.join(", ");
-
+        if (x > 0) timeRemaining.push(x + 's');
+        liveLink.style.display = 'none';
+        cd.value = timeRemaining.join(', ');
+        cd.style.display = 'inline';
     }
 }
+
 window.onload = function() {
     var cdtimer = setInterval(countToShow, 1000);
     document.body.ondblclick = function() {
