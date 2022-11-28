@@ -7,13 +7,19 @@ Global
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box
+  box-sizing: border-box;
 }
-  
+
 html {
   min-height: 100%;
-  background: rgb(168,255,176);
-  background: linear-gradient(38deg, rgba(168,255,176,1) 0%, rgba(146,255,209,1) 23%, rgba(235,255,155,1) 51%, rgba(216,251,171,1) 100%);
+  background: rgb(168, 255, 176);
+  background: linear-gradient(
+    0deg,
+    rgba(168, 255, 176, 1) 0%,
+    rgba(146, 255, 209, 1) 23%,
+    rgb(244, 244, 244) 51%,
+    rgb(244, 244, 244) 100%
+  );
   font-size: 18px;
 }
 
@@ -38,9 +44,13 @@ a:hover {
 
 .text-gradient {
   background: rgb(48, 155, 255);
-  background: -webkit-linear-gradient(120deg,rgb(48, 155, 255) 0,#92ffd1 100%);
-  background: -moz-linear-gradient(120deg,rgb(48, 155, 255) 0,#92ffd1 100%);
-  background: linear-gradient(160deg,rgb(48, 155, 255) 0,#92ffd1 100%);
+  background: -webkit-linear-gradient(
+    120deg,
+    rgb(48, 155, 255) 0,
+    #92ffd1 100%
+  );
+  background: -moz-linear-gradient(120deg, rgb(48, 155, 255) 0, #92ffd1 100%);
+  background: linear-gradient(160deg, rgb(48, 155, 255) 0, #92ffd1 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -99,7 +109,7 @@ object {
 .byline {
   z-index: 2;
   flex: none;
-  font-size: .8rem;
+  font-size: 0.8rem;
   font-weight: 600;
   text-transform: uppercase;
   text-align: center;
@@ -134,22 +144,32 @@ main {
 
 .flex-item {
   border-radius: 3px;
-  padding: 20px;
+  border: #000 2px solid;
+  padding: 10px;
   min-width: 332px;
   text-align: center;
   flex: 0 1 auto;
   align-self: auto;
 }
 
-.flex-item:nth-child(odd) {
+/*.
+flex-item:nth-child(n+1) {
   background-image: linear-gradient(57deg, rgba(95, 61, 206, 0.5621976625078315) 29%, rgba(247, 136, 137, 0.5) 25%),linear-gradient(151deg, rgba(67, 120, 242, 0.1414604953802876) 80%, rgba(255, 167, 132, 0.5) 23%),linear-gradient(121deg, rgba(77, 175, 249, 0.22856651076791357) 30%, rgba(244, 132, 117, 0.5) 118%),linear-gradient(176deg, rgba(24, 92, 175, 0.1643534870019352) 32%, rgba(255, 150, 173, 0.5) 133%);
   background-blend-mode: color, hue, multiply, hue;
 }
 
-.flex-item:nth-child(even) {
-  background-image: linear-gradient(84deg, rgba(22, 141, 226, 0.783430799163243) 46%, rgba(237, 106, 130, 0.5) 71%),linear-gradient(155deg, rgba(68, 166, 191, 0.8248130712070572) 65%, rgba(252, 143, 172, 0.5) 109%),linear-gradient(22deg, rgba(19, 191, 239, 0.052054939492572005) 36%, rgba(249, 183, 167, 0.5) 23%),linear-gradient(27deg, rgba(81, 195, 204, 0.9875834730424722) 5%, rgba(255, 194, 193, 0.5) 133%); background-blend-mode: normal,hard-light,soft-light,normal;
+.flex-item:nth-child(n+2) {
+  background-image: linear-gradient(13deg, rgba(6, 98, 211, 0.7821810959839077) 34%, rgba(252, 197, 186, 0.5) 125%),linear-gradient(73deg, rgba(101, 133, 247, 0.6706575882704913) 64%, rgba(255, 137, 149, 0.5) 158%),linear-gradient(156deg, rgba(67, 37, 168, 0.22553528733503558) 58%, rgba(239, 124, 130, 0.5) 4%),linear-gradient(3deg, rgba(47, 203, 214, 0.1101498529244942) 40%, rgba(255, 213, 201, 0.5) 61%); background-blend-mode: color,normal,normal,hue;
 }
 
+.flex-item:nth-child(n+3) {
+  background-image: linear-gradient(154deg, rgba(31, 141, 145, 0.707515092962892) 12%, rgba(249, 177, 208, 0.5) 159%),linear-gradient(159deg, rgba(30, 83, 168, 0.5875622786744312) 80%, rgba(255, 182, 168, 0.5) 81%),linear-gradient(36deg, rgba(62, 141, 178, 0.41928699739582465) 87%, rgba(252, 151, 123, 0.5) 140%),linear-gradient(19deg, rgba(50, 34, 132, 0.5956358289682842) 84%, rgba(252, 181, 200, 0.5) 31%); background-blend-mode: hue,soft-light,screen,multiply;
+}
+
+.flex-item:nth-child(n+4) {
+  background-image: linear-gradient(68deg, rgba(75, 197, 234, 0.37838065410102595) 45%, rgba(247, 173, 200, 0.5) 118%),linear-gradient(64deg, rgba(60, 52, 219, 0.7097826596567047) 14%, rgba(247, 128, 178, 0.5) 22%),linear-gradient(97deg, rgba(27, 96, 119, 0.2679089666925507) 37%, rgba(244, 177, 173, 0.5) 3%),linear-gradient(50deg, rgba(31, 51, 226, 0.7885705193892405) 8%, rgba(247, 138, 163, 0.5) 1%); background-blend-mode: hard-light,overlay,lighten,hue;
+}
+*/
 .inner {
   margin: 20px;
 }
@@ -190,30 +210,59 @@ main {
 
 .neon {
   color: #fff;
-  text-shadow:
-    0 0 7px #fff,
-    0 0 10px rgb(113, 255, 255),
-    0 0 21px rgb(113, 255, 255),
-    0 0 42px rgb(113, 255, 255),
-    0 0 82px rgb(113, 255, 255),
-    0 0 92px rgb(113, 255, 255),
-    0 0 102px rgb(113, 255, 255),
-    0 0 151px rgb(113, 255, 255);
+  text-shadow: 0 0 7px #fff, 0 0 10px rgb(113, 255, 255),
+    0 0 21px rgb(113, 255, 255), 0 0 42px rgb(113, 255, 255),
+    0 0 82px rgb(113, 255, 255), 0 0 92px rgb(113, 255, 255),
+    0 0 102px rgb(113, 255, 255), 0 0 151px rgb(113, 255, 255);
 }
 
 .about {
   font-size: 1.4rem;
   line-height: 1.2;
-  flex: 1 0 0;
+  align-self: center;
+  /*flex: 1 0 0;*/
   border-radius: 3px;
-  padding: calc(1rem + 5vw);
-  margin: 0;
-  max-width: 600px;
-  color: #fff;
-  border: 1px solid #ceccd4;
-  background: #9D50BB;
-  background: -webkit-linear-gradient(to right, #6E48AA, #9D50BB);
-  background: linear-gradient(to right, #6E48AA, #9D50BB);
+  padding: 20px;
+  margin: 50px 22px;
+  max-width: 800px;
+  color: rgb(0, 0, 0);
+  border: 2px solid #000000;
+  /*background: #9d50bb;
+  background: -webkit-linear-gradient(to right, #6e48aa, #9d50bb);
+  background: linear-gradient(to right, #6e48aa, #9d50bb);*/
+}
+
+li {
+  float: left;
+  list-style: none;
+  width: auto;
+  padding-right: 5%;
+  font-weight: bold;
+}
+
+strong {
+  text-transform: uppercase;
+  display: block;
+  font-size: 500%;
+  margin: 0.25em 0;
+}
+
+.icon {
+  font-size: 200%;
+  border-radius: 0.5em;
+  padding: 0.5em;
+}
+
+#happy {
+  background: #bffca1;
+}
+
+#ok {
+  background: #fcf9a1;
+}
+
+#sad {
+  background: #fca1a1;
 }
 
 /***
@@ -233,7 +282,7 @@ footer {
 
 .link {
   text-align: justify;
-  font-size: .8rem;
+  font-size: 0.8rem;
   margin: 10px 5px;
   color: #fff;
   padding: 6px;
@@ -244,7 +293,7 @@ footer {
 }
 
 .copyright {
-  font-size: .8rem;
+  font-size: 0.8rem;
   margin: 20px 0 16px 0;
   color: #fff;
   width: 100%;
