@@ -1,9 +1,5 @@
 @charset "UTF-8";
 
-/***
-Global
-***/
-
 * {
   margin: 0;
   padding: 0;
@@ -35,19 +31,6 @@ a:hover {
   font-style: italic;
 }
 
-.text-gradient {
-  background: rgb(48, 155, 255);
-  background: -webkit-linear-gradient(
-    120deg,
-    rgb(48, 155, 255) 0,
-    #92ffd1 100%
-  );
-  background: -moz-linear-gradient(120deg, rgb(48, 155, 255) 0, #92ffd1 100%);
-  background: linear-gradient(160deg, rgb(48, 155, 255) 0, #92ffd1 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -62,10 +45,6 @@ a:hover {
   animation: 1s fadeIn;
   opacity: 1;
 }
-
-/***
-Header
-***/
 
 header {
   display: flex;
@@ -111,10 +90,6 @@ object {
   max-width: 270px;
 }
 
-/***
-Main
-***/
-
 main {
   display: flex;
   flex: 1 0 auto;
@@ -153,96 +128,17 @@ main {
   width: 400px;
 }
 
-.playlist {
-  max-width: 250px;
-  height: 380px;
-  margin: 20px;
-}
-
-#countdown {
-  flex: auto;
-  font-size: 18px;
-  letter-spacing: 1px;
-  line-height: 2;
-  width: 252px;
-  height: 100%;
-  text-align: center;
-  color: #000;
-  font-weight: bold;
-  background: none;
-  flex-grow: 1;
-}
-
-#live {
-  display: none;
-  font-size: 2rem;
-  letter-spacing: 2px;
-}
-
-.no-ul {
-  text-decoration: none;
-}
-
-.neon {
-  color: #fff;
-  text-shadow: 0 0 7px #fff, 0 0 10px rgb(113, 255, 255),
-    0 0 21px rgb(113, 255, 255), 0 0 42px rgb(113, 255, 255),
-    0 0 82px rgb(113, 255, 255), 0 0 92px rgb(113, 255, 255),
-    0 0 102px rgb(113, 255, 255), 0 0 151px rgb(113, 255, 255);
-}
-
 .about {
   font-size: 1.4rem;
   line-height: 1.2;
   align-self: center;
-  /*flex: 1 0 0;*/
   border-radius: 3px;
   padding: 20px;
   margin: 50px 22px;
   max-width: 800px;
   color: rgb(0, 0, 0);
   border: 2px solid #000000;
-  /*background: #9d50bb;
-  background: -webkit-linear-gradient(to right, #6e48aa, #9d50bb);
-  background: linear-gradient(to right, #6e48aa, #9d50bb);*/
 }
-
-li {
-  float: left;
-  list-style: none;
-  width: auto;
-  padding-right: 5%;
-  font-weight: bold;
-}
-
-strong {
-  text-transform: uppercase;
-  display: block;
-  font-size: 500%;
-  margin: 0.25em 0;
-}
-
-.icon {
-  font-size: 200%;
-  border-radius: 0.5em;
-  padding: 0.5em;
-}
-
-#happy {
-  background: #bffca1;
-}
-
-#ok {
-  background: #fcf9a1;
-}
-
-#sad {
-  background: #fca1a1;
-}
-
-/***
-Footer
-***/
 
 footer {
   flex-shrink: 0;
