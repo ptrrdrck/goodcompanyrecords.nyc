@@ -7,17 +7,41 @@
 }
 
 html {
-  min-height: 100%;
+  height: 100%;
+  width: 100%;
   background: rgb(251, 251, 251);
   font-size: 18px;
 }
 
 body {
   height: 100%;
+  width: 100%;
   font-family: Helvetica, sans-serif;
   margin: 0;
   display: flex;
   flex-direction: column;
+}
+
+@media (max-width: 599px) {
+  .byline {
+    top: 150px;
+    right: 50px;
+  }
+  .slider {
+    height: 360px;
+    width: 360px;
+  }
+}
+
+@media (min-width: 600px) {
+  .byline {
+    top: 90px;
+    right: 130px;
+  }
+  .slider {
+    height: 360px;
+    width: 960px;
+  }
 }
 
 a {
@@ -85,14 +109,13 @@ object {
   text-transform: uppercase;
   text-align: left;
   position: absolute;
-  top: 90px;
-  right: 130px;
   max-width: 270px;
 }
 
 main {
   display: flex;
-  height: 100%;
+  flex-direction: column;
+  min-height: 100%;
   justify-content: center;
   margin: 0;
   gap: 40px;
@@ -110,11 +133,9 @@ main {
 .slider {
   background: rgb(251, 251, 251);
   box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.125);
-  height: 360px;
   margin: auto;
   overflow: hidden;
   position: relative;
-  width: 960px;
 
   &::before,
   &::after {
@@ -167,9 +188,7 @@ main {
 
 footer {
   display: flex;
-  position: fixed;
-  left: 0;
-  bottom: 0;
+  flex: 0;
   width: 100%;
   flex-wrap: wrap;
   align-items: center;
