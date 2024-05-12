@@ -92,40 +92,65 @@ object {
 
 main {
   display: flex;
-  flex: 1 0 auto;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: space-evenly;
-  margin: 40px 0;
+  height: 100%;
+  justify-content: center;
+  margin: 0;
   gap: 40px;
 }
 
-.flex-container {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-content: stretch;
-  align-items: center;
-  gap: 30px;
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-380px * 27));
+  }
 }
 
-.flex-item {
-  border-radius: 3px;
-  border: #000 1px solid;
-  padding: 0px;
-  min-width: 332px;
-  text-align: center;
-  flex: 0 1 auto;
-  align-self: auto;
-}
+.slider {
+  background: rgb(251, 251, 251);
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.125);
+  height: 360px;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+  width: 960px;
 
-.inner {
-  margin: 0px;
+  &::before,
+  &::after {
+    content: "";
+    height: 360px;
+    position: absolute;
+    width: 360px;
+    z-index: 2;
+  }
+
+  &::after {
+    right: 0;
+    top: 0;
+    transform: rotateZ(180deg);
+  }
+
+  &::before {
+    left: 0;
+    top: 0;
+  }
+
+  .slide-track {
+    animation: scroll 140s linear infinite;
+    display: flex;
+    width: calc(360px * 27);
+    gap: 40px;
+  }
+
+  .slide {
+    height: 360px;
+    width: 360px;
+  }
 }
 
 .cover {
-  width: 400px;
+  width: 360px;
 }
 
 .about {
@@ -141,13 +166,16 @@ main {
 }
 
 footer {
-  flex-shrink: 0;
   display: flex;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  margin: 60px 0 0;
-  padding: calc(30px + 2vw) calc(20px + 2vw);
+  margin: 0;
+  padding: calc(4px + 1vw) calc(20px + 2vw);
   background: #000;
 }
 
