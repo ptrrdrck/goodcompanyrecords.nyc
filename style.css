@@ -23,12 +23,22 @@ body {
 }
 
 @media (max-width: 599px) {
+  header {
+    flex-direction: column;
+    justify-content: center;
+  }
   main {
-    margin: 80px 0;
+    margin: 70px 0 80px 0;
+  }
+  #header-left {
+    align-self: center;
   }
   .byline {
     top: 150px;
-    right: 50px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
   }
   .slider {
     height: 360px;
@@ -37,17 +47,70 @@ body {
 }
 
 @media (min-width: 600px) {
+  header {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
   main {
-    margin: 0 0 80px 0;
+    margin: 80px 0;
+  }
+  #header-left {
+    align-self: center;
   }
   .byline {
     top: 90px;
     right: 130px;
+    margin-left: unset;
+    margin-right: unset;
+  }
+  .slider {
+    height: 360px;
+    width: 580px;
+  }
+}
+
+@media (min-width: 820px) {
+  .slider {
+    width: 800px;
+  }
+}
+
+@media (min-width: 1024px) {
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 0;
+  }
+  #header-right {
+    padding-right: 130px;
+  }
+  main {
+    margin: 0 0 80px 0;
+  }
+  .byline {
+    vertical-align: middle;
+    top: 90px;
+    right: 130px;
+    margin-left: unset;
+    margin-right: unset;
   }
   .slider {
     height: 360px;
     width: 960px;
   }
+}
+
+#header-left {
+  flex: 1 0 auto;
+  min-width: 375px;
+  max-width: 480px;
+  height: auto;
+}
+
+#header-right {
+  display: flex;
+  justify-content: center;
+  align-self: center;
 }
 
 a {
@@ -78,15 +141,6 @@ a:hover {
 
 header {
   display: flex;
-  justify-content: flex-start;
-}
-
-.logo {
-  flex: 1 0 auto;
-  min-width: 375px;
-  max-width: 480px;
-  height: auto;
-  margin: 0;
 }
 
 object {
@@ -96,7 +150,6 @@ object {
 
 .home {
   display: block;
-  z-index: 1;
   background: 0 0;
   border: none;
 }
@@ -108,14 +161,12 @@ object {
 }
 
 .byline {
-  z-index: 2;
   display: flex;
   font-size: 1rem;
   font-weight: 600;
   text-transform: uppercase;
   text-align: left;
-  position: absolute;
-  max-width: 270px;
+  width: 270px;
 }
 
 main {
