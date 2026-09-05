@@ -1,27 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>GCR</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>About &middot; Good Company Records</title>
+    <meta
+      name="description"
+      content="Good Company Records is run collectively from within the five boroughs, representing our local sounds and the artists pushing them forward."
+    />
+    <link rel="canonical" href="https://goodcompanyrecords.nyc/about.html" />
+    <meta name="theme-color" content="#000000" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="About Good Company Records" />
+    <meta
+      property="og:description"
+      content="Made (with love for the dance floor) in New York."
+    />
+    <meta property="og:url" content="https://goodcompanyrecords.nyc/about.html" />
+    <meta
+      property="og:image"
+      content="https://goodcompanyrecords.nyc/img/gcr-border-logo-black-sm.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+
     <link rel="shortcut icon" type="image/png" href="./img/gcr-favicon.png" />
     <link href="./style.css" rel="stylesheet" />
   </head>
   <body>
-    <header class="fade-in">
-      <div class="logo">
-        <a class="home" href="./index.html">
-          <object type="image/svg+xml" data="./img/gcr-blur.svg">
-            <img src="./img/gcr-blur.svg" />
-          </object>
-        </a>
-      </div>
+    <header class="site-header fade-in">
+      <a
+        class="site-header__home"
+        href="./index.html"
+        aria-label="Good Company Records, home"
+      >
+        <img
+          class="site-header__logo"
+          src="./img/gcr-logo.svg"
+          width="400"
+          height="177"
+          alt="Good Company Records"
+        />
+      </a>
+      <p class="byline">Made (with love for the dance floor) in New York.</p>
     </header>
-    <div id="sub-header">
-      <p class="byline">MADE (WITH LOVE FOR THE DANCE FLOOR) IN NEW YORK.</p>
-    </div>
-    <main class="fade-in">
-      <p class="about">
+
+    <main class="site-main fade-in">
+      <p class="prose">
         Good Company Records is run collectively from within the five boroughs.
         As a label we aim to represent our local sounds and the artists pushing
         them forward. As a platform we aim to be inclusive through shared
@@ -29,38 +55,67 @@
         way. May the music matter to you, too.
       </p>
     </main>
-    <footer class="fade-in">
-      <a
-        class="link"
-        href="https://goodcompanyrecords.bandcamp.com/"
-        target="_blank"
-        >Bandcamp</a
-      >
-      <a
-        class="link"
-        href="https://www.instagram.com/goodcompanyrecords/"
-        target="_blank"
-        >Instagram</a
-      >
-      <a
-        class="link"
-        href="https://www.youtube.com/channel/UC2IklHyFaIMsJY_feiGM-Jg"
-        target="_blank"
-        >Youtube</a
-      >
-      <a
-        class="link"
-        href="https://soundcloud.com/goodcompanyrecords"
-        target="_blank"
-        >Soundcloud</a
-      >
-      <a class="link" href="https://ra.co/labels/12602" target="_blank"
-        >Resident Advisor</a
-      >
-      <a class="link" href="https://twitter.com/gcrmusic" target="_blank"
-        >Twitter</a
-      >
-      <p class="copyright">EST. 2014 © 2023 GCR MUSIC LLC</p>
+
+    <footer class="site-footer fade-in">
+      <nav aria-label="Good Company Records elsewhere">
+        <ul class="site-footer__links">
+          <li>
+            <a
+              class="link"
+              href="https://goodcompanyrecords.bandcamp.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Bandcamp</a
+            >
+          </li>
+          <li>
+            <a
+              class="link"
+              href="https://open.spotify.com/playlist/1KFyCYpWT6LQ5KUvICK7ny?si=3abaf6c79bf44bd4"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Spotify</a
+            >
+          </li>
+          <li>
+            <a
+              class="link"
+              href="https://www.discogs.com/label/1742037-Good-Company-Records-NYC?page=1"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Discogs</a
+            >
+          </li>
+          <li>
+            <a
+              class="link"
+              href="https://www.instagram.com/goodcompanyrecords/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Instagram</a
+            >
+          </li>
+          <li>
+            <a
+              class="link"
+              href="https://www.youtube.com/channel/UC2IklHyFaIMsJY_feiGM-Jg"
+              target="_blank"
+              rel="noopener noreferrer"
+              >YouTube</a
+            >
+          </li>
+          <li>
+            <a
+              class="link"
+              href="https://ra.co/labels/12602"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Resident Advisor</a
+            >
+          </li>
+        </ul>
+      </nav>
+      <p class="copyright">EST. 2014 &copy; GCR MUSIC LLC</p>
     </footer>
   </body>
 </html>
