@@ -57,6 +57,13 @@
   marquee.addEventListener("touchend", release, { passive: true });
   marquee.addEventListener("touchcancel", release, { passive: true });
 
+  // CSS suppresses the iOS callout; browsers that route a long press through
+  // contextmenu instead (Android Chrome) need this. Only while a finger is
+  // down, so a right-click on a desktop still opens the normal menu.
+  marquee.addEventListener("contextmenu", function (event) {
+    if (marquee.classList.contains("is-held")) event.preventDefault();
+  });
+
   // The cover size is a clamp() of the viewport, so the distance changes on resize.
   var resizeTimer;
   window.addEventListener("resize", function () {
