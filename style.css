@@ -213,10 +213,19 @@ body {
   animation: marquee-scroll var(--marquee-duration) linear infinite;
 }
 
-/* Let visitors stop on a cover they want to look at. */
-.marquee.is-animated:hover .marquee__track,
-.marquee.is-animated:focus-within .marquee__track {
+/* Let visitors stop on a cover they want to look at: rest the cursor on it,
+   tab into it, or — via carousel.js — hold a finger anywhere on the strip. */
+.marquee.is-animated:focus-within .marquee__track,
+.marquee.is-animated.is-held .marquee__track {
   animation-play-state: paused;
+}
+
+/* Hover only where a cursor really hovers. iOS applies a sticky :hover on tap
+   that persists until the next tap elsewhere, which would strand the marquee. */
+@media (hover: hover) {
+  .marquee.is-animated:hover .marquee__track {
+    animation-play-state: paused;
+  }
 }
 
 .marquee__group {
