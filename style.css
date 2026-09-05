@@ -1,130 +1,305 @@
 @charset "UTF-8";
 
-* {
-  margin: 0;
-  padding: 0;
+/* ==========================================================================
+   Good Company Records — goodcompanyrecords.nyc
+   1. Design tokens
+   2. Reset & base
+   3. Layout shell (sticky footer)
+   4. Header
+   5. Marquee (album art carousel)
+   6. Prose (about)
+   7. Footer
+   8. Motion preferences
+   ========================================================================== */
+
+/* 1. Design tokens
+   ========================================================================== */
+
+:root {
+  --color-bg: rgb(251, 251, 251);
+  --color-fg: #000;
+  --color-bg-invert: #000;
+  --color-fg-invert: #fff;
+  --color-placeholder: rgba(0, 0, 0, 0.06);
+
+  --font-body: Helvetica, "Helvetica Neue", Arial, sans-serif;
+
+  /* Page gutter, header/footer padding and vertical rhythm all scale together. */
+  --gutter: clamp(1.25rem, 4vw, 3.5rem);
+  --space-header: clamp(1rem, 3vw, 2.5rem);
+
+  --logo-width: clamp(15rem, 30vw, 26rem);
+
+  /* Carousel geometry. Everything downstream is derived from these two.
+     The vh cap keeps covers from overrunning short or landscape windows. */
+  --cover-size: min(clamp(13.75rem, 26vw, 22.5rem), 40vh);
+  --cover-gap: clamp(1rem, 2.5vw, 2.5rem);
+  --marquee-fade: clamp(1.5rem, 6vw, 6rem);
+  --marquee-duration: 140s;
+
+  --focus-ring: 2px solid currentColor;
+  --focus-offset: 3px;
+}
+
+/* 2. Reset & base
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-html {
-  height: 100%;
-  width: 100%;
-  background: rgb(251, 251, 251);
-  font-size: 18px;
-}
-
-body {
-  height: 100%;
-  width: 100%;
-  font-family: Helvetica, sans-serif;
+* {
   margin: 0;
-  display: flex;
-  flex-direction: column;
+  padding: 0;
 }
 
-@media (max-width: 599px) {
-  header {
-    flex-direction: column;
-    justify-content: center;
-  }
-  main {
-    margin: 70px 0 80px 0;
-  }
-  #header-left {
-    align-self: center;
-  }
-  .byline {
-    top: 150px;
-    left: 0;
-    right: 0;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .slider {
-    height: 360px;
-    width: 360px;
-  }
+html {
+  font-size: 18px;
+  background: var(--color-bg);
+  -webkit-text-size-adjust: 100%;
 }
 
-@media (min-width: 600px) {
-  header {
-    flex-direction: column;
-    justify-content: flex-start;
-  }
-  main {
-    margin: 80px 0;
-  }
-  #header-left {
-    align-self: center;
-  }
-  .byline {
-    top: 90px;
-    right: 130px;
-    margin-left: unset;
-    margin-right: unset;
-  }
-  .slider {
-    height: 360px;
-    width: 580px;
-  }
+img,
+svg {
+  display: block;
+  max-width: 100%;
 }
 
-@media (min-width: 820px) {
-  .slider {
-    width: 800px;
-  }
-}
-
-@media (min-width: 1024px) {
-  header {
-    flex-direction: row;
-    justify-content: space-between;
-    margin-bottom: 0;
-  }
-  #header-right {
-    padding-right: 130px;
-  }
-  main {
-    margin: 0 0 80px 0;
-  }
-  .byline {
-    vertical-align: middle;
-    top: 90px;
-    right: 130px;
-    margin-left: unset;
-    margin-right: unset;
-  }
-  .slider {
-    height: 360px;
-    width: 960px;
-  }
-}
-
-#header-left {
-  flex: 1 0 auto;
-  min-width: 375px;
-  max-width: 480px;
-  height: auto;
-}
-
-#header-right {
-  display: flex;
-  justify-content: center;
-  align-self: center;
+ul {
+  list-style: none;
 }
 
 a {
+  color: inherit;
   text-decoration: underline;
-  color: #000;
-  border-radius: 2px;
   text-underline-position: under;
+  border-radius: 2px;
 }
 
-a:hover {
-  font-style: italic;
+:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
 }
 
-@keyframes fadeIn {
+/* 3. Layout shell
+   --------------------------------------------------------------------------
+   The body is the only flex column on the page. <main> is the sole growing
+   child, which is what pins the footer to the bottom of short pages without
+   letting it float over long ones.
+   ========================================================================== */
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-body);
+  color: var(--color-fg);
+  background: var(--color-bg);
+}
+
+.site-main {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* Allows the marquee to shrink rather than force the page to scroll. */
+  min-height: 0;
+  padding-block: clamp(1.5rem, 4vh, 3rem);
+}
+
+/* 4. Header
+   ========================================================================== */
+
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-header);
+  padding: var(--gutter) var(--gutter) 0;
+}
+
+.site-header__home {
+  display: block;
+  border: none;
+  background: none;
+  /* The logo is the link target; no underline under artwork. */
+  text-decoration: none;
+}
+
+.site-header__logo {
+  width: var(--logo-width);
+  height: auto;
+}
+
+.byline {
+  /* ~17 characters keeps the byline in its intended three-line block. */
+  max-width: 17ch;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+/* Below the two-column threshold the header stacks and centres itself. */
+@media (max-width: 47.9375em) {
+  .site-header {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .byline {
+    max-width: 24ch;
+  }
+}
+
+/* 5. Marquee
+   --------------------------------------------------------------------------
+   The track holds two identical groups of covers. Travelling exactly one
+   group + one gap lands the second group where the first started, so the
+   loop is seamless for any number of covers at any size — no magic numbers.
+   Without JavaScript the clone is never added and the strip stays a plain
+   horizontally scrollable row.
+   ========================================================================== */
+
+.marquee {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  /* Softens both edges into the page background instead of a hard cut. */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 var(--marquee-fade),
+    #000 calc(100% - var(--marquee-fade)),
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 var(--marquee-fade),
+    #000 calc(100% - var(--marquee-fade)),
+    transparent
+  );
+}
+
+.marquee::-webkit-scrollbar {
+  display: none;
+}
+
+.marquee.is-animated {
+  overflow: hidden;
+}
+
+.marquee__track {
+  display: flex;
+  gap: var(--cover-gap);
+  width: max-content;
+  padding-inline: var(--marquee-fade);
+}
+
+.marquee.is-animated .marquee__track {
+  padding-inline: 0;
+  animation: marquee-scroll var(--marquee-duration) linear infinite;
+}
+
+/* Let visitors stop on a cover they want to look at. */
+.marquee.is-animated:hover .marquee__track,
+.marquee.is-animated:focus-within .marquee__track {
+  animation-play-state: paused;
+}
+
+.marquee__group {
+  display: flex;
+  gap: var(--cover-gap);
+}
+
+.cover {
+  width: var(--cover-size);
+  height: var(--cover-size);
+  aspect-ratio: 1;
+  object-fit: cover;
+  background-color: var(--color-placeholder);
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.125);
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    /* Half the track, plus half of the gap that separates the two groups. */
+    transform: translateX(calc(-50% - var(--cover-gap) / 2));
+  }
+}
+
+/* 6. Prose
+   ========================================================================== */
+
+.prose {
+  align-self: center;
+  max-width: 44rem;
+  margin-inline: var(--gutter);
+  padding: clamp(1rem, 3vw, 1.5rem);
+  border: 2px solid var(--color-fg);
+  border-radius: 3px;
+  font-size: clamp(1.125rem, 2.5vw, 1.4rem);
+  line-height: 1.35;
+}
+
+/* 7. Footer
+   ========================================================================== */
+
+.site-footer {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  padding: calc(1rem + 1vw) var(--gutter);
+  color: var(--color-fg-invert);
+  background: var(--color-bg-invert);
+}
+
+.site-footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem 0.25rem;
+}
+
+.link {
+  display: block;
+  padding: 0.35rem 0.5rem;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  font-size: 0.8rem;
+  /* Inverts on hover rather than shifting to italic, which reflows the row. */
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.link:hover,
+.link:focus-visible {
+  color: var(--color-bg-invert);
+  background: var(--color-fg-invert);
+  text-decoration-color: transparent;
+}
+
+.copyright {
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+/* 8. Motion preferences
+   ========================================================================== */
+
+@keyframes fade-in {
   from {
     opacity: 0;
   }
@@ -134,145 +309,25 @@ a:hover {
 }
 
 .fade-in {
-  -webkit-animation: 1s fadeIn;
-  animation: 1s fadeIn;
-  opacity: 1;
+  animation: fade-in 1s both;
 }
 
-header {
-  display: flex;
-}
-
-object {
-  z-index: -1;
-  pointer-events: none;
-}
-
-.home {
-  display: block;
-  background: 0 0;
-  border: none;
-}
-
-#sub-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.byline {
-  display: flex;
-  font-size: 1rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  text-align: left;
-  width: 270px;
-}
-
-main {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  max-height: fit-content;
-  justify-content: center;
-  gap: 40px;
-}
-
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(calc(-380px * 27));
-  }
-}
-
-.slider {
-  background: rgb(251, 251, 251);
-  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.125);
-  margin: auto;
-  overflow: hidden;
-  position: relative;
-
-  &::before,
-  &::after {
-    content: "";
-    height: 360px;
-    position: absolute;
-    width: 360px;
-    z-index: 2;
+@media (prefers-reduced-motion: reduce) {
+  .fade-in {
+    animation: none;
   }
 
-  &::after {
-    right: 0;
-    top: 0;
-    transform: rotateZ(180deg);
+  /* Fall back to the manual-scroll presentation and drop the duplicate set. */
+  .marquee.is-animated {
+    overflow-x: auto;
   }
 
-  &::before {
-    left: 0;
-    top: 0;
+  .marquee.is-animated .marquee__track {
+    padding-inline: var(--marquee-fade);
+    animation: none;
   }
 
-  .slide-track {
-    animation: scroll 140s linear infinite;
-    display: flex;
-    width: calc(360px * 27);
-    gap: 40px;
+  .marquee__group[aria-hidden="true"] {
+    display: none;
   }
-
-  .slide {
-    height: 360px;
-    width: 360px;
-  }
-}
-
-.cover {
-  width: 360px;
-}
-
-.about {
-  font-size: 1.4rem;
-  line-height: 1.2;
-  align-self: center;
-  border-radius: 3px;
-  padding: 20px;
-  margin: 50px 22px;
-  max-width: 800px;
-  color: rgb(0, 0, 0);
-  border: 2px solid #000000;
-}
-
-footer {
-  display: flex;
-  flex: 0;
-  width: 100%;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  padding: calc(4px + 1vw) calc(20px + 2vw);
-  background: #000;
-}
-
-.link {
-  text-align: justify;
-  font-size: 0.8rem;
-  margin: 10px 5px;
-  color: #fff;
-  padding: 6px;
-  border: 1px solid #000;
-  border-radius: 2px;
-  background: none;
-  text-underline-position: under;
-}
-
-.copyright {
-  font-size: 0.8rem;
-  margin: 20px 0 16px 0;
-  color: #fff;
-  width: 100%;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
 }
