@@ -6,6 +6,9 @@
  * gives the CSS animation an identical second copy to scroll into place, and
  * derive the duration from the measured width so the covers always travel at
  * the same speed no matter how many there are or how wide the viewport is.
+ *
+ * It also wires up touch-hold pausing; the cursor and keyboard equivalents are
+ * handled in CSS.
  */
 (function () {
   "use strict";
@@ -36,6 +39,23 @@
 
   updateDuration();
   marquee.classList.add("is-animated");
+
+  // Touch-hold pauses, matching what the cursor does on a pointer device.
+  // The listeners sit on the strip itself, so a finger resting anywhere in it
+  // counts — on a cover or in the gap between two.
+  var hold = function () {
+    marquee.classList.add("is-held");
+  };
+  var release = function (event) {
+    // Only resume once every finger is off; a second touch keeps it paused.
+    if (event.touches && event.touches.length) return;
+    marquee.classList.remove("is-held");
+  };
+
+  // Passive: these never call preventDefault, so page scrolling stays smooth.
+  marquee.addEventListener("touchstart", hold, { passive: true });
+  marquee.addEventListener("touchend", release, { passive: true });
+  marquee.addEventListener("touchcancel", release, { passive: true });
 
   // The cover size is a clamp() of the viewport, so the distance changes on resize.
   var resizeTimer;
