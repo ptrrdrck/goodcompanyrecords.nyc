@@ -176,6 +176,13 @@ body {
   overflow-x: auto;
   overscroll-behavior-x: contain;
   scrollbar-width: none;
+  /* A long press on iOS raises the image callout, and showing it fires
+     touchcancel — which reads as the finger leaving and resumes the scroll.
+     Suppressing the callout keeps a resting finger holding the strip.
+     Both properties inherit, so the covers inside are covered too. */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
   /* Softens both edges into the page background instead of a hard cut. */
   -webkit-mask-image: linear-gradient(
     to right,
