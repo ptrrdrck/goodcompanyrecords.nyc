@@ -28,7 +28,7 @@
   --gutter: clamp(1.25rem, 4vw, 3.5rem);
   --space-header: clamp(1rem, 3vw, 2.5rem);
 
-  --logo-width: clamp(15rem, 30vw, 26rem);
+  --logo-width: clamp(7.5rem, 15vw, 13rem);
 
   /* Carousel geometry. Everything downstream is derived from these two.
      The vh cap keeps covers from overrunning short or landscape windows. */
@@ -117,7 +117,9 @@ body {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
+  /* Stacked and centred by default; the queries below widen it out. */
+  justify-content: center;
+  text-align: center;
   gap: var(--space-header);
   padding: var(--gutter) var(--gutter) 0;
 }
@@ -136,23 +138,26 @@ body {
 }
 
 .byline {
-  /* ~17 characters keeps the byline in its intended three-line block. */
-  max-width: 17ch;
+  max-width: 24ch;
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.35;
   text-transform: uppercase;
 }
 
-/* Below the two-column threshold the header stacks and centres itself. */
-@media (max-width: 47.9375em) {
+/* Wide enough for the logo and byline to share a line: push them apart. */
+@media (min-width: 28em) {
   .site-header {
-    justify-content: center;
-    text-align: center;
+    justify-content: space-between;
+    text-align: left;
   }
+}
 
+/* Wide enough for the byline to sit on a single line. */
+@media (min-width: 48em) {
   .byline {
-    max-width: 24ch;
+    max-width: none;
+    white-space: nowrap;
   }
 }
 
